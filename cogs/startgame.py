@@ -1,6 +1,7 @@
 # import discord
 from discord.ext import commands
 import random
+import game.variables as vs
 from threading import Thread, Event
 # from multiprocessing import Process
 # import time
@@ -8,18 +9,6 @@ from threading import Thread, Event
 # import game.variables as vs
 
 stop_event = Event()
-# def do_actions():
-#    """
-#    Function that should timeout after 5 seconds. It simply prints a number and waits 1 second.
-#    :return:
-#    """
-#    i = 0
-#    while True:
-#        i += 1
-#        # print(i)
-#        time.sleep(1)
-
-
 class Startgame(commands.Cog):
 
     def __init__(self,client):
@@ -27,8 +16,9 @@ class Startgame(commands.Cog):
 
 
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_ready(self,ctx):
         print("startgame.py")
+        ctx.unload(f'toss')
         # await ctx.send('Game Starting in 3 seconds.')
         # action_process = Process()
         # action_process.start()
@@ -37,16 +27,15 @@ class Startgame(commands.Cog):
 
     @commands.command()
     async def throw(self,ctx):
-        x=random.choice(['r','l'])
-        if(x=='r'):
-            print("t")
+        await ctx.send("wel... which dir(r | l)")
+        vs.flag=1
+        ctx.load(f'commands')
 
     @commands.command()
     async def catch(self,ctx):
-        x=random.choice(['r','l'])
-        if(x=='l'):
-            print("C")
-
+        await ctx.send("wel... which dir(r | l)")
+        vs.flag=0
+        ctx.load(f'commands')
 
 
 

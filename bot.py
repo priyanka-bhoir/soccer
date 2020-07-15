@@ -17,7 +17,7 @@ prefix=os.getenv('PREFIX')
 #
 #     return prefix[str(message.guild.id)]
 # prefix=get_prefix
-client =commands.Bot(prefix,description="Soccer Game",color=3447003,help_command=None)
+client = commands.Bot(prefix,description="Soccer Game",color=3447003,help_command=None)
 
 @client.event
 async def on_ready():
@@ -45,12 +45,13 @@ async def play(ctx):
     # game.play.play(ctx)
     vs.p1=0
     vs.p2=0
+    vs.stp=0
     await ctx.send(f"Here You are Playing with our bot")
     await ctx.send("Toss and start....")
-    # for file in os.listdir('./cogs'):
-    #     if file.endswith('.py'):
-    #         client.load_extension(f'cogs.{file[:-3]}')
-    client.load_extension(f'cogs.toss')
+    for file in os.listdir('./cogs'):
+        if file.endswith('.py'):
+            client.load_extension(f'cogs.{file[:-3]}')
+    # client.load_extension(f'cogs.toss')
     # client.unload_extension(f'cogs.toss')
     # client.load_extension(f'cogs.startgame')
 
