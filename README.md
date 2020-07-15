@@ -5,5 +5,5 @@
 this is a simple soccer game bot for your discord
 
 # Add Config Vars:
-   > PREFIX - Command prefix
-   > DISCORD_TOKEN - Your bot token
+   * PREFIX - Command prefix
+   * DISCORD_TOKEN - Your bot token
