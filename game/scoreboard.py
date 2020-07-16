@@ -23,4 +23,4 @@ class Scoreboard(commands.Cog):
         await ctx.send(self.score())
 
 def setup(client):
-    client.add_cog(commands(client))
+    client.add_cog(Scoreboard(client))

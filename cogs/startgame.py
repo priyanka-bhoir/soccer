@@ -18,7 +18,7 @@ class Startgame(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self,ctx):
         print("startgame.py")
-        ctx.unload(f'toss')
+        # ctx.unload(f'cogs.toss')
         # await ctx.send('Game Starting in 3 seconds.')
         # action_process = Process()
         # action_process.start()
@@ -27,15 +27,15 @@ class Startgame(commands.Cog):
 
     @commands.command()
     async def throw(self,ctx):
-        await ctx.send("wel... which dir(r | l)")
+        await ctx.send("wel... which direction(r (right) or l(left))")
         vs.flag=1
-        ctx.load(f'commands')
+        self.client.load_extension(f'cogs.lrcmd')
 
     @commands.command()
     async def catch(self,ctx):
-        await ctx.send("wel... which dir(r | l)")
+        await ctx.send("wel... which direction(r (right) or l(left))")
         vs.flag=0
-        ctx.load(f'commands')
+        self.client.load_extension(f'cogs.lrcmd')
 
 
 

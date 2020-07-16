@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 prefix=os.getenv('PREFIX')
 
-class Commands(commands.Cog):
+class Lrcmd(commands.Cog):
 
 
     def __init__(self,client):
@@ -15,8 +15,8 @@ class Commands(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self,ctx):
-        print("commands.py")
-        ctx.unload(f'startgame')
+        print("lrcomd.py")
+        # ctx.unload(f'startgame')
 
     @commands.command()
     async def r(self,ctx):
@@ -37,7 +37,7 @@ class Commands(commands.Cog):
                     vs.p2=vs.p2+1
 
         else:
-            ctx.load(f'scoreboard')
+            self.client.load_extension(f'scoreboard')
         # a=sc.score(self.client,ctx.user)
 
 
@@ -60,7 +60,7 @@ class Commands(commands.Cog):
                     vs.p2=vs.p2+1
 
         else:
-            ctx.load(f'scoreboard')
+            self.client.load_extension(f'cogs.scoreboard')
 
 def setup(client):
-    client.add_cog(commands(client))
+    client.add_cog(Lrcmd(client))

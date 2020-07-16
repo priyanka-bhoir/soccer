@@ -48,20 +48,20 @@ async def play(ctx):
     vs.stp=0
     await ctx.send(f"Here You are Playing with our bot")
     await ctx.send("Toss and start....")
-    for file in os.listdir('./cogs'):
-        if file.endswith('.py'):
-            client.load_extension(f'cogs.{file[:-3]}')
-    # client.load_extension(f'cogs.toss')
+    # for file in os.listdir('./cogs'):
+    #     if file.endswith('.py'):
+    #         client.load_extension(f'cogs.{file[:-3]}')
+    client.load_extension(f'cogs.toss')
     # client.unload_extension(f'cogs.toss')
     # client.load_extension(f'cogs.startgame')
 
 @client.event
-async def on_command_error(ctx,err):
+async def on_Command_error(ctx):
     if ctx.author == client.user:
         return
     # if isinstance(err,commands.MissingRequiredArgument):
     else:
-        await ctx.send('Please give a valid command(check help for more)')
+        await ctx.send('Please typed an invalid argument(check help for more)')
 
 @client.command()
 async def user(ctx):
